@@ -1,0 +1,99 @@
+.car-availability {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    background-color:#333;
+    color : white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden; /* Ensure that content does not overflow the container */
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.car-availability h2 {
+    color : white
+}
+
+.filters label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+}
+
+.filter-input, .search-input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 100%; /* Make sure inputs are responsive */
+}
+
+.search-input {
+    margin-top: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 300px;
+    box-sizing: border-box;
+}
+
+.car-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+.car-item:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filters label {
+        font-size: 14px; /* Smaller font size on small screens */
+    }
+
+    .filter-input, .search-input {
+        font-size: 12px; /* Smaller font size for inputs */
+    }
+
+    ul {
+        max-height: 200px; /* Reduce max-height for small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .car-availability {
+        padding: 10px; /* Reduce padding on very small screens */
+    }
+
+    .filters label {
+        font-size: 12px; /* Even smaller font size for very small screens */
+    }
+
+    .filter-input, .search-input {
+        font-size: 10px; /* Smaller font size for inputs */
+    }
+
+    ul {
+        max-height: 150px; /* Further reduce max-height */
+    }
+}
