@@ -1,15 +1,20 @@
 .car-availability {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
     border-radius: 8px;
-    background-color:#333;
-    color : white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: url('/img/onetwo.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     max-width: 100%;
     box-sizing: border-box;
     height: 100%;
-    overflow: hidden; /* Ensure that content does not overflow the container */
+    overflow: hidden;
 }
 
 .filters {
@@ -17,15 +22,25 @@
     flex-direction: column;
     gap: 15px;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+    background: transparent; /* Fully transparent background for filters */
+    padding: 15px;
+    border-radius: 8px;
 }
+
 .car-availability h2 {
-    color : white
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .filters label {
     display: flex;
     flex-direction: column;
     font-weight: 600;
+    text-align: left;
+    color: #fff; /* White text for labels */
 }
 
 .filter-input, .search-input {
@@ -34,11 +49,28 @@
     border-radius: 4px;
     font-size: 14px;
     width: 100%;
-    max-width: 100%; /* Make sure inputs are responsive */
+    box-sizing: border-box; /* Ensure all elements fit within their container */
+    max-width: 100%;
+    background-color: transparent; /* Fully transparent background for inputs */
+    color: #fff; /* White text for inputs */
+}
+
+.filter-input {
+    width: 100%; /* Ensure uniform width for all inputs */
+}
+
+.filters label select, 
+.filters label input[type="date"] {
+    width: 100%; /* Ensure both date and select inputs take up the full width */
 }
 
 .search-input {
     margin-top: 10px;
+}
+
+.car-table-container {
+    width: 100%;
+    max-width: 400px;
 }
 
 ul {
@@ -48,12 +80,16 @@ ul {
     overflow-y: auto;
     max-height: 300px;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
 }
 
 .car-item {
     padding: 10px;
     border-bottom: 1px solid #eee;
     font-size: 16px;
+    background-color: transparent; /* Fully transparent background for list items */
+    color: white; /* White text for list items */
 }
 
 .car-item:last-child {
@@ -68,32 +104,32 @@ ul {
     }
 
     .filters label {
-        font-size: 14px; /* Smaller font size on small screens */
+        font-size: 14px;
     }
 
     .filter-input, .search-input {
-        font-size: 12px; /* Smaller font size for inputs */
+        font-size: 12px;
     }
 
     ul {
-        max-height: 200px; /* Reduce max-height for small screens */
+        max-height: 200px;
     }
 }
 
 @media (max-width: 480px) {
     .car-availability {
-        padding: 10px; /* Reduce padding on very small screens */
+        padding: 10px;
     }
 
     .filters label {
-        font-size: 12px; /* Even smaller font size for very small screens */
+        font-size: 12px;
     }
 
     .filter-input, .search-input {
-        font-size: 10px; /* Smaller font size for inputs */
+        font-size: 10px;
     }
 
     ul {
-        max-height: 150px; /* Further reduce max-height */
+        max-height: 150px;
     }
 }

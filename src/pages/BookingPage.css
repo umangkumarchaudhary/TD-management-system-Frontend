@@ -1,12 +1,12 @@
 .booking-page {
     font-family: Arial, sans-serif;
     color: #f9f9f9;
-    background: url('../../img/images.jfif') no-repeat center center fixed;
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-attachment: fixed; /* Keeps the image fixed in place while scrolling */
+    background: url('../img/mbss.avif') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
     padding: 20px;
     box-sizing: border-box;
-    min-height: 100vh; /* Ensures the page always has at least the full viewport height */
+    min-height: 100vh;
 }
 
 .title {
@@ -27,7 +27,6 @@
 
 .form-container, .availability-container {
     flex: 1;
-    
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -35,7 +34,6 @@
 }
 
 .list-container {
-    background-color: #8f93eb;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -60,5 +58,38 @@
 
     .form-container, .availability-container {
         padding: 15px;
+    }
+}
+
+.title {
+    font-family: 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Scrolling message CSS */
+.scrolling-message {
+
+    position: relative;
+
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.message {
+    position: absolute;
+
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
     }
 }

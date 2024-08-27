@@ -30,6 +30,9 @@ const BookingPage = () => {
     return (
         <div className="booking-page">
             <h1 className="title">Book a Test Drive</h1>
+            <div className="scrolling-message">
+                <div className="message">Wait for 30 to 60 seconds. The website is on sleep mode and will get active shortly.</div>
+            </div>
             <div className="container">
                 <div className="form-container">
                     <BookingForm onBookingSuccess={handleBookingSuccess} />

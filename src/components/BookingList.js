@@ -47,8 +47,8 @@ const BookingList = () => {
     useEffect(() => {
         // Filter bookings based on search query
         const filtered = bookings.filter(booking =>
-            booking.carModel.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            booking.salesConsultant.toLowerCase().includes(searchQuery.toLowerCase())
+            (booking.carModel ? booking.carModel.toLowerCase().includes(searchQuery.toLowerCase()) : false) ||
+            (booking.salesConsultant ? booking.salesConsultant.toLowerCase().includes(searchQuery.toLowerCase()) : false)
         );
         setFilteredBookings(filtered);
     }, [searchQuery, bookings]);
@@ -103,7 +103,7 @@ const BookingList = () => {
     };
 
     return (
-        <div className="booking-list">
+        <div className="booking-list-container">
             <h1>Booking List</h1>
             
             {/* Search and Sort Inputs */}
@@ -122,7 +122,7 @@ const BookingList = () => {
             </div>
 
             {/* Bookings List */}
-            <ul>
+            <ul className="booking-list">
                 {filteredBookings.map(booking => (
                     <li key={booking._id} className="booking-item">
                         <div className="booking-time">
@@ -135,7 +135,7 @@ const BookingList = () => {
                         </div>
                         <div className="booking-details">
                             <span>Car Model: {booking.carModel}</span>
-                            <span>Sales Consultant: {booking.consultantName}</span>
+                            <span>Sales Consultant: {booking.salesConsultant}</span>
                             <span>Location: {booking.location}</span>
                         </div>
                         <button onClick={() => handleCancel(booking._id)} className="cancel-button">

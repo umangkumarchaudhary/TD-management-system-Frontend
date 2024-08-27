@@ -1,8 +1,16 @@
 /* Booking List Container */
-.booking-list {
+.booking-list-container {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
     width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -11,39 +19,77 @@ h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
-    font-size: 2em;
+    font-size: 2.5em;
+    font-weight: bold;
 }
 
-/* Search Container */
-.search-container {
-    text-align: center;
+/* Search and Sort Container */
+.search-sort-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-bottom: 20px;
+    justify-content: center; /* Center elements horizontally */
 }
 
+/* Search Input */
 .search-input {
-    padding: 10px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 2px solid #ccc;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
     width: 100%;
     max-width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
+    background-color: black;
 }
 
 .search-input:focus {
     border-color: #3498db;
     box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    outline: none;
+    color : black;
+}
+
+/* Sort Select */
+.sort-select {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 2px solid #ccc;
+    background-color: #333;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 150px;
+}
+
+.sort-select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+/* Booking List */
+.booking-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
 }
 
 /* Booking Item */
 .booking-item {
-    background-color: #f9f9f9;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 8px;
+    background-color: #fff;
+    
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: slideInUp 0.5s ease-in-out;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
 }
 
 .booking-item:hover {
@@ -54,17 +100,18 @@ h1 {
 /* Booking Time */
 .booking-time {
     font-weight: bold;
-    font-size: 18px;
-    color: #2c3e50;
+    font-size: 16px; /* Slightly smaller text */
+    color: #fff; /* White text for contrast */
+    display: flex;
+    justify-content: space-between;
+    background-color: #3498db; /* Blue background */
+    border-radius: 6px; /* Slightly smaller border radius */
+    padding: 8px 12px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced space below the time section */
+    width: fit-content; /* Adjusts width to fit the content */
+    max-width: 100%; /* Ensures it doesn't exceed container width */
 }
 
-.booking-start-end {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #3498db;
-    color: #fff;
-    border-radius: 4px;
-}
 
 /* Booking Date */
 .booking-date {
@@ -88,119 +135,92 @@ h1 {
 /* Cancel Button */
 .cancel-button {
     margin-top: 10px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: #e74c3c;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .cancel-button:hover {
     background-color: #c0392b;
+    transform: scale(1.05);
 }
 
 /* Modal */
 .modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease-in-out;
-    width: 80%;
-    max-width: 500px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content h2 {
+    margin-top: 0;
     margin-bottom: 20px;
+    font-size: 1.5em;
     color: #333;
 }
 
+/* Modal Input and Buttons */
 .modal-content input {
-    padding: 10px;
-    width: 100%;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
 }
 
 .modal-content button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 15px;
+    transition: background-color 0.3s, opacity 0.3s;
 }
 
-/* Error Message */
+.modal-content button:hover {
+    opacity: 0.9;
+}
+
+.modal-content button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .error {
-    margin-top: 10px;
     color: #e74c3c;
+    margin-top: 10px;
 }
 
-/* Keyframes for Animations */
+/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInUp {
-    from {
         transform: translateY(20px);
-        opacity: 0;
     }
     to {
-        transform: translateY(0);
         opacity: 1;
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .booking-item {
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }
-
-    .search-input {
-        width: 90%;
-    }
-
-    .modal {
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.2em;
-    }
-
-    .booking-time, .booking-date, .booking-details {
-        font-size: 14px;
-    }
-
-    .cancel-button {
-        padding: 8px 16px;
-        font-size: 14px;
+        transform: translateY(0);
     }
 }

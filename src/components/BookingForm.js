@@ -5,7 +5,8 @@ import './BookingForm.css';
 const BACKEND_URL = 'https://td-management-system-backend.onrender.com';
 
 const BookingForm = ({ onBookingSuccess }) => {
-    const [date, setDate] = useState('');
+    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+    const [date, setDate] = useState(today);
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [carModel, setCarModel] = useState('');
@@ -13,8 +14,9 @@ const BookingForm = ({ onBookingSuccess }) => {
     const [location, setLocation] = useState(''); 
     const [passkey, setPasskey] = useState('');
     const [carOptions] = useState([
-        'A200', 'A200d', 'C200', 'C220d', 'E200', 
-        'E220d', 'E350d', 'S350d', 'S450', 'GLA200', 'GLA220d', 'GLC220d', 'GLC300', 'GLE300d', 'GLE450d', 'GLE450', 'GLS450', 'GLS450D'
+        'A200 : Spectral Blue', 'A200d : cosmos Black', 'A200d Mountain Grey', 'C200 : Mojave Silver', 'C220d : Opalite White', 
+        'E220d : Graphite Grey','GLA220d (AMG LINE): Spectral Blue (Nashik)','GLC220d : Selenite Grey', 'GLC300 : Sodalite Blue', 'GLS450d : Sodalite Blue', 'GLS450d : Blue',
+         'GLS450 : Selenite Grey','EQB 350 4Matic : Digital White', 'EQE 500 : Diamond White', 'AMG GLE 53 : Obsidian Black', 'EQS 580 : Graphite Grey'
     ]);
     const [bookedCars, setBookedCars] = useState([]);
     const [timeOptions, setTimeOptions] = useState([]);
@@ -23,18 +25,21 @@ const BookingForm = ({ onBookingSuccess }) => {
     // Hardcoded passkeys for each consultant
     const consultantPasskeys = {
         'Umang': 'umang1234',
-        'King': 'king1234',
         'Harsh': 'harsh1234',
         'Aditya': 'aditya1234',
         'Shefali Jain': 'shefali1234',
         'Amogh': 'amogh1234',
         'Nidhi': 'nidhi1234',
         'Imaad': 'imaad1234',
+        'Anmol': 'anmol1234',
         'Durgesh': 'durgesh1234',
         'Vaibhav': 'vaibhav1234',
         'Sushil': 'sushil1234',
         'Ajinkya': 'ajinkya1234',
-        'Bhagyesh': 'bhagyesh1234'
+        'Bhagyesh': 'bhagyesh1234',
+        'Anusmita' : 'anusmita1234',
+        'Hemant GM sales' : 'Hemant1234',
+        'Ankit Biswal':'bhadwa'
     };
 
     useEffect(() => {
@@ -65,9 +70,7 @@ const BookingForm = ({ onBookingSuccess }) => {
             setTimeOptions(options);
         };
 
-        if (date) {
-            generateTimeOptions();
-        }
+        generateTimeOptions();
     }, [date]);
 
     useEffect(() => {
@@ -150,7 +153,7 @@ const BookingForm = ({ onBookingSuccess }) => {
                     value={date} 
                     onChange={(e) => setDate(e.target.value)} 
                     required 
-                    min={new Date().toISOString().split('T')[0]}
+                    min={today} // Ensure the minimum date is today
                 />
             </div>
             <div className="form-group">
@@ -213,6 +216,7 @@ const BookingForm = ({ onBookingSuccess }) => {
                     <option value="Aditya">Aditya</option>
                     <option value="Shefali Jain">Shefali Jain</option>
                     <option value="Amogh">Amogh</option>
+                    <option value= "Anmol"> Anmol</option>
                     <option value="Nidhi">Nidhi</option>
                     <option value="Imaad">Imaad</option>
                     <option value="Durgesh">Durgesh</option>
@@ -220,6 +224,9 @@ const BookingForm = ({ onBookingSuccess }) => {
                     <option value="Sushil">Sushil</option>
                     <option value ="Ajinkya"> Ajinkya</option>
                     <option value = "Bhagyesh">Bhagyesh</option>
+                    <option value = "Anusmita"> Anusmita</option>
+                    <option value = "Hemant GM sales"> Hemant GM sales</option>
+                    <option value = "Ankit Biswal"> Ankit </option>
                 </select>
             </div>
             <div className="form-group">
@@ -233,19 +240,18 @@ const BookingForm = ({ onBookingSuccess }) => {
                 />
             </div>
             <div className="form-group">
-                <label>Passkey</label> {/* New field for Passkey */}
+                <label>Passkey</label>
                 <input
                     type="password"
                     value={passkey}
                     onChange={(e) => setPasskey(e.target.value)}
-                    placeholder="Enter your unique Passkey"
+                    placeholder="Enter passkey"
                     required
                 />
             </div>
             <button type="submit" disabled={loading}>
-                {loading ? 'Booking...' : 'Book Test Drive'}
+                {loading ? 'Submitting...' : 'Submit Booking'}
             </button>
-            {loading && <p>Loading...</p>}
         </form>
     );
 };

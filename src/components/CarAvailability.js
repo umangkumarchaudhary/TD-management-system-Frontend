@@ -25,27 +25,27 @@ const CarAvailability = () => {
         fetchBookings();
     }, []);
 
-    useEffect(() => {
-        const filterAvailableCars = () => {
-            const dateFilter = selectedDate || getTodayDate();
-            const startFilter = startTime || getCurrentTime();
-            const endFilter = endTime || getDefaultEndTime();
+    const filterAvailableCars = () => {
+        const dateFilter = selectedDate || getTodayDate();
+        const startFilter = startTime || getCurrentTime();
+        const endFilter = endTime || getDefaultEndTime();
 
-            const available = bookings.filter(booking => {
-                const bookingStartTime = new Date(`${booking.date}T${booking.startTime}`);
-                const bookingEndTime = new Date(`${booking.date}T${booking.endTime}`);
+        const available = bookings.filter(booking => {
+            const bookingStartTime = new Date(`${booking.date}T${booking.startTime}`);
+            const bookingEndTime = new Date(`${booking.date}T${booking.endTime}`);
 
-                const isAvailable = bookingEndTime <= new Date(`${dateFilter}T${startFilter}`) ||
-                                    bookingStartTime >= new Date(`${dateFilter}T${endFilter}`);
+            const isAvailable = bookingEndTime <= new Date(`${dateFilter}T${startFilter}`) ||
+                                bookingStartTime >= new Date(`${dateFilter}T${endFilter}`);
 
-                return isAvailable;
-            }).map(booking => booking.carModel);
+            return isAvailable;
+        }).map(booking => booking.carModel);
 
-            return [...new Set(available)]; // Remove duplicates
-        };
+        return [...new Set(available)]; // Remove duplicates
+    };
 
+    const handleSearch = () => {
         setAvailableCars(filterAvailableCars());
-    }, [bookings, selectedDate, startTime, endTime]);
+    };
 
     const handleDateChange = (e) => {
         setSelectedDate(e.target.value);
@@ -63,6 +63,20 @@ const CarAvailability = () => {
         car.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    // Helper function to generate 30-minute interval time options
+    const generateTimeOptions = () => {
+        const options = [];
+        for (let hour = 0; hour < 24; hour++) {
+            for (let minute = 0; minute < 60; minute += 30) {
+                const time = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+                options.push(time);
+            }
+        }
+        return options;
+    };
+
+    const timeOptions = generateTimeOptions();
+
     return (
         <div className="car-availability">
             <h2>Check Car Availability</h2>
@@ -78,22 +92,31 @@ const CarAvailability = () => {
                 </label>
                 <label>
                     Start Time:
-                    <input
-                        type="time"
+                    <select
                         value={startTime}
                         onChange={handleStartTimeChange}
                         className="filter-input"
-                    />
+                    >
+                        {timeOptions.map(time => (
+                            <option key={time} value={time}>{time}</option>
+                        ))}
+                    </select>
                 </label>
                 <label>
                     End Time:
-                    <input
-                        type="time"
+                    <select
                         value={endTime}
                         onChange={handleEndTimeChange}
                         className="filter-input"
-                    />
+                    >
+                        {timeOptions.map(time => (
+                            <option key={time} value={time}>{time}</option>
+                        ))}
+                    </select>
                 </label>
+                <button onClick={handleSearch} className="search-button">
+                    Check Availability
+                </button>
                 <input
                     type="text"
                     placeholder="Search Car Model"
@@ -134,14 +157,17 @@ const getTodayDate = () => {
 
 const getCurrentTime = () => {
     const now = new Date();
+    const minutes = Math.ceil(now.getMinutes() / 30) * 30; // Round to next 30-minute interval
+    now.setMinutes(minutes);
     const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    return `${hours}:${minutes}`;
+    const minutesStr = now.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutesStr}`;
 };
 
 const getDefaultEndTime = () => {
     const now = new Date();
     now.setHours(now.getHours() + 1); // Default end time to one hour from now
+    now.setMinutes(0);
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
