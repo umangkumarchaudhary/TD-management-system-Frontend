@@ -41,7 +41,8 @@ const BookingForm = ({ onBookingSuccess }) => {
         'Bhagyesh': 'bhagyesh1234',
         'Anusmita' : 'anusmita1234',
         'Hemant GM sales' : 'Hemant1234',
-        'Ankit Biswal':'bhadwa'
+        'Ankit Biswal':'bhadwa',
+        'Rachana': 'rachana1234', 
     };
 
     useEffect(() => {
@@ -229,6 +230,7 @@ const BookingForm = ({ onBookingSuccess }) => {
                     <option value = "Anusmita"> Anusmita</option>
                     <option value = "Hemant GM sales"> Hemant GM sales</option>
                     <option value = "Ankit Biswal"> Ankit </option>
+                    <option value = "Rachana">Rachana</option>
                 </select>
             </div>
             <div className="form-group">
