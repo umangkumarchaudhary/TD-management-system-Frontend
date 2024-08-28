@@ -99,3 +99,25 @@ td[colspan="6"] {
         white-space: nowrap;
     }
 }
+
+.export-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.export-button {
+    background-color: #28a745; /* Green color */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.export-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+

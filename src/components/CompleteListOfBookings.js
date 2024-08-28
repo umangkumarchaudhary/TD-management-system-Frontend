@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import * as XLSX from 'xlsx';
 import './CompleteListOfBookings.css';
 
 const BACKEND_URL = 'https://td-management-system-backend.onrender.com'; // Add your backend URL here
@@ -73,6 +74,17 @@ const CompleteListOfBookings = () => {
         setSortOrder(prevSortOrder => (prevSortOrder === 'desc' ? 'asc' : 'desc'));
     };
 
+    const exportToExcel = () => {
+        // Filter out the unwanted fields
+        const filteredData = filteredBookings.map(({ _id, __v, passkey, ...rest }) => rest);
+    
+        const worksheet = XLSX.utils.json_to_sheet(filteredData); // Convert filtered bookings to worksheet
+        const workbook = XLSX.utils.book_new(); // Create a new workbook
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Bookings'); // Append the worksheet to the workbook
+        XLSX.writeFile(workbook, 'bookings.xlsx'); // Write the workbook to a file
+    };
+    
+
     return (
         <div className="complete-list-of-bookings">
             <h2>Complete List of Bookings</h2>
@@ -83,8 +95,13 @@ const CompleteListOfBookings = () => {
                 <button onClick={() => setViewOption('complete')}>Complete Bookings</button>
             </div>
             <button className="sort-button" onClick={toggleSortOrder}>
-                Sort by Date: {sortOrder === 'desc' ?  'Oldest to Newest' : 'Newest to Oldest' }
+                Sort by Date: {sortOrder === 'desc' ? 'Oldest to Newest' : 'Newest to Oldest'}
             </button>
+            <div className="export-button-container">
+                <button onClick={exportToExcel} className="export-button">
+                    Export to Excel
+                </button>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -117,6 +134,7 @@ const CompleteListOfBookings = () => {
             </table>
         </div>
     );
+    
 };
 
 export default CompleteListOfBookings;
