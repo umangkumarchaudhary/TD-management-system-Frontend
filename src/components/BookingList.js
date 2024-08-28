@@ -135,7 +135,7 @@ const BookingList = () => {
                         </div>
                         <div className="booking-details">
                             <span>Car Model: {booking.carModel}</span>
-                            <span>Sales Consultant: {booking.salesConsultant}</span>
+                            <span>Sales Consultant: {booking.consultantName}</span>
                             <span>Location: {booking.location}</span>
                         </div>
                         <button onClick={() => handleCancel(booking._id)} className="cancel-button">
