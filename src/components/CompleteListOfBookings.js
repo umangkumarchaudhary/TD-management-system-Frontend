@@ -83,7 +83,7 @@ const CompleteListOfBookings = () => {
                 <button onClick={() => setViewOption('complete')}>Complete Bookings</button>
             </div>
             <button className="sort-button" onClick={toggleSortOrder}>
-                Sort by Date: {sortOrder === 'desc' ? 'Newest to Oldest' : 'Oldest to Newest'}
+                Sort by Date: {sortOrder === 'desc' ?  'Oldest to Newest' : 'Newest to Oldest' }
             </button>
             <table>
                 <thead>

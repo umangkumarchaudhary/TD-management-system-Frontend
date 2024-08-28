@@ -145,7 +145,7 @@ const BookingList = () => {
                 ))}
             </ul>
 
-            {/* Modal for cancellation */}
+            
             {showModal && (
                 <div className="modal">
                     <div className="modal-content">
