@@ -14,9 +14,11 @@ const BookingForm = ({ onBookingSuccess }) => {
     const [location, setLocation] = useState(''); 
     const [passkey, setPasskey] = useState('');
     const [carOptions] = useState([
-        'A200 : Spectral Blue', 'A200d : cosmos Black', 'A200d Mountain Grey', 'C200 : Mojave Silver', 'C220d : Opalite White', 
-        'E220d : Graphite Grey','GLA220d (AMG LINE): Spectral Blue (Nashik)','GLC220d : Selenite Grey', 'GLC300 : Sodalite Blue', 'GLS450d : Sodalite Blue', 'GLS450d : Blue',
-         'GLS450 : Selenite Grey','EQB 350 4Matic : Digital White', 'EQE 500 : Diamond White', 'AMG GLE 53 : Obsidian Black', 'EQS 580 : Graphite Grey'
+        'A200 : Spectral Blue', 'A200d : cosmos Black', 'A200 : indium Silver','C220d : Mojave Silver', 'C220d : Opalite White','c200 : white', 'C 300 : Sodalite Blue',
+        'E220d : Graphite Grey','E220d : Polar white(workshop)','E200 : Polar White','E 350d : Graphite Grey','GLA220d 4 matic(AMG LINE): Mountain Grey','GLA 200 : Cosmos Black',
+        'GLC220d : Obsidian Black','GLC 300 4M : Polar white','GLE 300d : Sodalite Blue','GLE 300d : Hitech Silver',
+          'GLS450d : Blue',
+         'GLS450 : Selenite Grey','EQA250+ : Black','EQB 350 4Matic : Digital White', 'EQE 500 : Diamond White', 'AMG GLE 53 : Obsidian Black', 'EQS 580 : Graphite Grey'
     ]);
     const [bookedCars, setBookedCars] = useState([]);
     const [timeOptions, setTimeOptions] = useState([]);
