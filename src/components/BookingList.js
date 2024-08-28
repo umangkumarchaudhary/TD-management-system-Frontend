@@ -48,7 +48,7 @@ const BookingList = () => {
         // Filter bookings based on search query
         const filtered = bookings.filter(booking =>
             (booking.carModel ? booking.carModel.toLowerCase().includes(searchQuery.toLowerCase()) : false) ||
-            (booking.salesConsultant ? booking.salesConsultant.toLowerCase().includes(searchQuery.toLowerCase()) : false)
+            (booking.consultantName ? booking.consultantName.toLowerCase().includes(searchQuery.toLowerCase()) : false)
         );
         setFilteredBookings(filtered);
     }, [searchQuery, bookings]);
