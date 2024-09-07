@@ -1,3 +1,4 @@
+// Header.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
@@ -22,6 +23,7 @@ const Header = () => {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/dashboard">Dashboard</Link></li>
                     <li><Link to="/complete-list">Complete List</Link></li>
+                    <li><Link to="/test-drive-dashboard">Test Drive Dashboard</Link></li> {/* Add this link */}
                 </ul>
             </nav>
             <div className="hamburger" onClick={toggleMenu}>

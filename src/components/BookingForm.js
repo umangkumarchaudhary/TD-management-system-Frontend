@@ -53,8 +53,8 @@ const BookingForm = ({ onBookingSuccess }) => {
             const currentMinute = now.getMinutes();
             const selectedDate = new Date(date);
 
-            let startHour = 9;
-            let endHour = 19;
+            let startHour = 1;
+            let endHour = 23;
 
             if (selectedDate.toDateString() === now.toDateString()) {
                 startHour = currentHour;

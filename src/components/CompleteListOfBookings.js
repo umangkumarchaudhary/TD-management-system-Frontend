@@ -87,54 +87,75 @@ const CompleteListOfBookings = () => {
 
     return (
         <div className="complete-list-of-bookings">
-            <h2>Complete List of Bookings</h2>
-            <div className="tabs">
-                <button onClick={() => setViewOption('today')}>Today's Test Drive</button>
-                <button onClick={() => setViewOption('ongoing')}>Ongoing Test Drive</button>
-                <button onClick={() => setViewOption('upcoming')}>Upcoming Test Drive</button>
-                <button onClick={() => setViewOption('complete')}>Complete Bookings</button>
-            </div>
-            <button className="sort-button" onClick={toggleSortOrder}>
-                Sort by Date: {sortOrder === 'desc' ? 'Oldest to Newest' : 'Newest to Oldest'}
-            </button>
-            <div className="export-button-container">
-                <button onClick={exportToExcel} className="export-button">
-                    Export to Excel
-                </button>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Consultant Name</th>
-                        <th>Location</th>
-                        <th>Car Model</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredBookings.length > 0 ? (
-                        filteredBookings.map((booking, index) => (
-                            <tr key={index}>
-                                <td>{booking.date}</td>
-                                <td>{booking.startTime}</td>
-                                <td>{booking.endTime}</td>
-                                <td>{booking.consultantName}</td>
-                                <td>{booking.location}</td>
-                                <td>{booking.carModel}</td>
-                            </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="6">No bookings available</td>
+    <h2>Complete List of Bookings</h2>
+    <div className="button-container">
+        <button onClick={() => setViewOption('today')}>Today's Test Drive</button>
+        <button onClick={() => setViewOption('ongoing')}>Ongoing Test Drive</button>
+        <button onClick={() => setViewOption('upcoming')}>Upcoming Test Drive</button>
+        <button onClick={() => setViewOption('complete')}>Complete Bookings</button>
+    </div>
+    <button className="sort-button" onClick={toggleSortOrder}>
+        Sort by Date: {sortOrder === 'desc' ? 'Oldest to Newest' : 'Newest to Oldest'}
+    </button>
+    <div className="export-button-container">
+        <button onClick={exportToExcel} className="export-button">
+            Export to Excel
+        </button>
+    </div>
+    <div className="table-scroll">
+        <table className="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Consultant Name</th>
+                    <th>Location</th>
+                    <th>Car Model</th>
+                </tr>
+            </thead>
+            <tbody>
+                {filteredBookings.length > 0 ? (
+                    filteredBookings.map((booking, index) => (
+                        <tr key={index}>
+                            <td>{booking.date}</td>
+                            <td>{booking.startTime}</td>
+                            <td>{booking.endTime}</td>
+                            <td>{booking.consultantName}</td>
+                            <td>{booking.location}</td>
+                            <td>{booking.carModel}</td>
                         </tr>
-                    )}
-                </tbody>
-            </table>
-        </div>
+                    ))
+                ) : (
+                    <tr>
+                        <td colSpan="6">No bookings available</td>
+                    </tr>
+                )}
+            </tbody>
+        </table>
+    </div>
+    <div className="card-container">
+        {filteredBookings.length > 0 ? (
+            filteredBookings.map((booking, index) => (
+                <div key={index} className="card">
+                    <h3>Booking Details</h3>
+                    <p><strong>Date:</strong> {booking.date}</p>
+                    <p><strong>Start Time:</strong> {booking.startTime}</p>
+                    <p><strong>End Time:</strong> {booking.endTime}</p>
+                    <p><strong>Consultant Name:</strong> {booking.consultantName}</p>
+                    <p><strong>Location:</strong> {booking.location}</p>
+                    <p><strong>Car Model:</strong> {booking.carModel}</p>
+                </div>
+            ))
+        ) : (
+            <div className="card">
+                <p>No bookings available</p>
+            </div>
+        )}
+    </div>
+</div>
+
     );
-    
 };
 
 export default CompleteListOfBookings;

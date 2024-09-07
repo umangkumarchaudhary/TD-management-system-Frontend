@@ -1,0 +1,113 @@
+/* Container for the entire dashboard */
+.test-drive-dashboard {
+    padding: 20px;
+    background-color: #f4f4f9;
+    min-height: 100vh;
+}
+
+/* Style for month selector */
+.month-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.month-selector label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+.month-selector select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.month-selector select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Style for chart titles */
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Responsive layout for charts */
+@media (min-width: 768px) {
+    .test-drive-dashboard {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .month-selector {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .month-selector label {
+        margin-bottom: 10px;
+    }
+
+    .month-selector select {
+        width: 100%;
+    }
+}
+
+/* Responsive container for the charts */
+.ResponsiveContainer {
+    margin-bottom: 40px;
+}
+
+/* Improve chart axis labels */
+.recharts-xAxis .recharts-cartesian-axis-tick text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.recharts-yAxis .recharts-cartesian-axis-tick text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Styling for chart bars */
+.recharts-bar {
+    transition: fill 0.3s ease;
+}
+
+.recharts-bar:hover {
+    fill: #0056b3;
+}
+
+/* Responsive styling for chart container */
+@media (max-width: 600px) {
+    .ResponsiveContainer {
+        height: 300px;
+    }
+
+    .recharts-xAxis .recharts-cartesian-axis-tick text {
+        font-size: 12px;
+    }
+
+    .recharts-yAxis .recharts-cartesian-axis-tick text {
+        font-size: 12px;
+    }
+}
+
+/* Responsive styling for the month selector dropdown */
+.month-selector select {
+    font-size: 14px;
+    padding: 6px;
+}
