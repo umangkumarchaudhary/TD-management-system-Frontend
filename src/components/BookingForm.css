@@ -1,9 +1,3 @@
-
-
-select option[disabled] {
-    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white text */
-    background-color: #000000; /* Black background */
-}
 /* General form styles */
 form {
     display: flex;
@@ -11,14 +5,14 @@ form {
     max-width: 90%;
     width: 400px; /* Adjust width for larger screens */
     margin: 0 auto;
-    padding: 20px;
-    background-image: url('/img/onetwo.jpg'); /* Background image */
+    padding: 25px;
+    background-image: url('/img/onetwo.jpg');
     background-size: cover;
     background-position: center;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(138, 4, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Deeper shadow for contrast */
     position: relative;
-    animation: fadeIn 0.5s ease-in-out; /* Add fade-in animation */
+    animation: fadeIn 0.6s ease-in-out;
 }
 
 /* Input and select styles */
@@ -26,13 +20,13 @@ input[type="date"],
 input[type="time"],
 select {
     margin-bottom: 15px;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+    border: 3px solid rgba(247, 206, 3, 0.3);
+    border-radius: 20px;
     color: #fff; /* White text color */
-    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
-    transition: background-color 0.3s, border-color 0.3s, transform 0.3s; /* Smooth transition for background, border, and scale */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background */
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
 }
 
 input[type="time"] {
@@ -40,47 +34,68 @@ input[type="time"] {
     width: calc(50% - 10px);
     margin-right: 10px;
 }
+/* Dropdown select field styling */
+select {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    color: #fff; /* Keep text white in the closed state */
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+select option {
+    color: #000; /* Set option text color to black */
+    background-color: #fff; /* Ensure option background is white */
+}
+
+/* Ensure options are clearly visible when hovered */
+select option:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+}
+
 
 input[type="time"]:last-of-type {
     margin-right: 0;
 }
 
 select {
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    color: #fff; /* White text color */
-    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
-    transition: background-color 0.3s, border-color 0.3s, transform 0.3s; /* Smooth transition for background, border, and scale */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
 }
 
 select:hover {
-    background-color: rgb(0, 0, 0); /* Darker background on hover */
-    border-color: #007bff; /* Highlight border color on hover */
-    transform: scale(1.05); /* Slightly enlarge dropdown on hover */
+    background-color: rgba(255, 255, 255, 0.2); /* Lighten background on hover */
+    border-color: #00acee; /* Bright blue highlight */
+    transform: scale(1.05);
 }
 
 /* Button styles */
 button {
-    padding: 10px 15px;
+    padding: 12px 20px;
     font-size: 18px;
-    color: white;
-    background-color: #007bff;
+    color: #fff;
+    background-color: #00acee; /* Bright blue for action button */
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Added box-shadow transition */
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    background-color: #008bb2;
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Dark shadow on hover */
 }
 
 button:disabled {
-    background-color: #007bff;
+    background-color: rgba(0, 172, 238, 0.6);
     cursor: not-allowed;
 }
 
@@ -90,43 +105,22 @@ button:disabled {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 4px solid rgba(0, 0, 0, 0.1);
+    border: 4px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    border-top: 4px solid #007bff;
+    border-top: 4px solid #00acee;
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
 }
 
-/* BookingForm.css */
-
-@keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .loading-spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #000;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    animation: spin 1s linear infinite;
-    display: inline-block;
-    margin-left: 10px;
-  }
-  
-  .loading-message {
+/* Loading message styles */
+.loading-message {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-  }
-  
+}
+
 /* Form group styles */
 .form-group {
     margin-bottom: 15px;
@@ -142,19 +136,26 @@ button:disabled {
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: #fff; /* White text color */
-    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border-radius: 6px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #00acee; /* Blue border on focus */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 600px) {
     form {
         width: 100%;
-        padding: 15px;
+        padding: 20px;
     }
 
     input[type="time"] {

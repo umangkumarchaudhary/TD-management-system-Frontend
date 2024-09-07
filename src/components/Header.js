@@ -14,9 +14,9 @@ const Header = () => {
         <header className="header">
             <div className="logo-container">
                 <img src={logo} alt="Logo" className="logo-img" />
-                <div className="logo-text">Mercedes Benz - Silver Star</div>
+                <div className="logo-text">Mercedes - Benz Silver Star</div>
             </div>
-            <div className="header-title">Test Drive Management System</div>
+            <div className="header-title">Test Drive Booking System</div>
             <nav className={`nav ${isOpen ? 'open' : ''}`}>
                 <ul>
                     <li><Link to="/">Home</Link></li>
