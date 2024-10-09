@@ -49,6 +49,12 @@ select option {
     color: #000; /* Set option text color to black */
     background-color: #fff; /* Ensure option background is white */
 }
+/* Styles for disabled options */
+select option:disabled {
+    background-color: red;  /* Set background to red when the option is disabled */
+    color: white;  /* Set the text color to white for better contrast */
+}
+
 
 /* Ensure options are clearly visible when hovered */
 select option:hover {

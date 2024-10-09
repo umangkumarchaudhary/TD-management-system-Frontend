@@ -11,14 +11,15 @@ const BookingForm = ({ onBookingSuccess }) => {
     const [endTime, setEndTime] = useState('');
     const [carModel, setCarModel] = useState('');
     const [consultantName, setConsultantName] = useState('');
-    const [location, setLocation] = useState(''); 
+    const [location, setLocation] = useState('');
     const [passkey, setPasskey] = useState('');
+
     const [carOptions] = useState([
         'A200 : Spectral Blue', 'A200d : cosmos Black', 'A200 : indium Silver','C220d : Mojave Silver', 'C220d : Opalite White','c200 : white', 'C 300 : Sodalite Blue',
         'E220d : Graphite Grey','E220d : Polar white(workshop)','E200 : Polar White','E 350d : Graphite Grey','GLA220d 4 matic(AMG LINE): Mountain Grey','GLA 200 : Cosmos Black',
         'GLC220d : Obsidian Black','GLC 300 4M : Polar white','GLE 300d : Sodalite Blue','GLE 300d : Hitech Silver',
-          'GLS450d : Blue',
-         'GLS450 : Selenite Grey','EQA250+ : Black','EQB 350 4Matic : Digital White', 'EQE 500 : Diamond White', 'AMG GLE 53 : Obsidian Black', 'EQS 580 : Graphite Grey'
+        'GLS450d : Blue',
+        'GLS450 : Selenite Grey','EQA250+ : Black','EQB 350 4Matic : Digital White', 'EQE 500 : Diamond White', 'AMG GLE 53 : Obsidian Black', 'EQS 580 : Graphite Grey'
     ]);
     const [bookedCars, setBookedCars] = useState([]);
     const [timeOptions, setTimeOptions] = useState([]);
@@ -27,6 +28,7 @@ const BookingForm = ({ onBookingSuccess }) => {
     // Hardcoded passkeys for each consultant
     const consultantPasskeys = {
         'Umang': 'umang1234',
+        'King': 'king1234',
         'Harsh': 'harsh1234',
         'Aditya': 'aditya1234',
         'Shefali Jain': 'shefali1234',
@@ -39,10 +41,15 @@ const BookingForm = ({ onBookingSuccess }) => {
         'Sushil': 'sushil1234',
         'Ajinkya': 'ajinkya1234',
         'Bhagyesh': 'bhagyesh1234',
-        'Anusmita' : 'anusmita1234',
-        'Hemant GM sales' : 'Hemant1234',
-        'Ankit Biswal':'bhadwa',
-        'Rachana': 'rachana1234', 
+        'Hemant GM sales': 'hemant1234',
+        'Ankit Biswal': 'ankit1234',
+        'Rachana': 'rachana1234',
+        'Vikram': 'vikram1234',
+        'Chauffer': 'chauffer1234',
+        'Ashish' : 'ashish1234',
+        'Zakir' : 'zakir1234',
+        'Vishal' :'vishal1234',
+        'OtherTaskLikeFuelingorWashing' : 'other1234',
     };
 
     useEffect(() => {
@@ -201,7 +208,7 @@ const BookingForm = ({ onBookingSuccess }) => {
                             >
                                 {car} 
                                 {booking 
-                                    ? ` (unavailable - booked by ${booking.consultantName} from ${booking.startTime} to ${booking.endTime})`
+                                    ? ` (Unavailable - Booked by ${booking.consultantName} from ${booking.startTime} to ${booking.endTime})`
                                     : ''
                                 }
                             </option>
@@ -213,6 +220,7 @@ const BookingForm = ({ onBookingSuccess }) => {
                 <label>Consultant Name</label>
                 <select value={consultantName} onChange={(e) => setConsultantName(e.target.value)} required>
                     <option value="">Select Consultant</option>
+                    {/* ...Consultant options */}
                     <option value="Umang">Umang</option>
                     <option value="King">King</option>
                     <option value="Harsh">Harsh</option>
@@ -227,14 +235,20 @@ const BookingForm = ({ onBookingSuccess }) => {
                     <option value="Sushil">Sushil</option>
                     <option value ="Ajinkya"> Ajinkya</option>
                     <option value = "Bhagyesh">Bhagyesh</option>
-                    <option value = "Anusmita"> Anusmita</option>
                     <option value = "Hemant GM sales"> Hemant GM sales</option>
                     <option value = "Ankit Biswal"> Ankit </option>
-                    <option value = "Rachana">Rachana</option>
+                    <option value = "Rachana">Rachana Bagav</option>
+                    <option value = "Vikram">Vikram</option>
+                    <option value = "Vishal">Vishal</option>
+                    <option value = "Zakir">Zakir</option>
+                    <option value = "Abhijeet">Abhijeet</option>
+                    <option value = "Ashish">Ashish</option>
+                    <option value = "Chauffer">Chauffer</option>
+                    <option value = "OtherTaskLikeFuelingorWashing">Fueling/Washing</option>
                 </select>
             </div>
             <div className="form-group">
-                <label>Location</label> {/* New field for Location */}
+                <label>Location</label>
                 <input
                     type="text"
                     value={location}

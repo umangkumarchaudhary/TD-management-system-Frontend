@@ -1,140 +1,47 @@
 .dashboard {
     padding: 20px;
-    background: #f4f4f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    background-color: #f4f4f9; /* Light background to contrast the dark bars */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
-.dashboard h2 {
-    color: #333;
-    font-size: 24px;
+h2 {
+    font-size: 1.8rem;
     margin-bottom: 20px;
-    text-align: center;
+    color: #333;
 }
 
-.recharts-tooltip-wrapper {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.recharts-tooltip-label {
-    color: #666;
-}
-
-.recharts-tooltip-item {
-    color: #888;
-}
-
-.recharts-bar {
-    border-radius: 4px;
-}
-
-.custom-tooltip {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.custom-tooltip .label {
-    font-weight: bold;
-}
-
-.custom-tooltip .desc {
-    color: #666;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .dashboard {
-        padding: 15px;
-    }
-
-    .dashboard h2 {
-        font-size: 20px;
-    }
-
-    .recharts-tooltip-wrapper {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .dashboard {
-        padding: 10px;
-    }
-
-    .dashboard h2 {
-        font-size: 18px;
-    }
-
-    .recharts-tooltip-wrapper {
-        font-size: 12px;
-    }
-
-    .custom-tooltip {
-        font-size: 12px;
-        padding: 8px;
-    }
+.responsive-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .calendar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; /* Add some space above the calendar */
+    margin-top: 20px;
 }
 
-.react-calendar {
-    border: 1px solid #ddd; /* Light border around the calendar */
-    border-radius: 8px; /* Rounded corners for the calendar */
-    background: #fff; /* White background for the calendar */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle 3D effect */
+.custom-tooltip {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
 }
 
-/* Style for the calendar header */
-.react-calendar__navigation {
-    margin-bottom: 10px;
+.custom-tooltip p {
+    margin: 0;
 }
 
-.react-calendar__navigation button {
-    background: #f4f4f9; /* Light background for navigation buttons */
-    border: 1px solid #ddd; /* Border around buttons */
-    border-radius: 4px; /* Rounded corners for buttons */
-    color: #333; /* Text color for buttons */
+.calendar {
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.react-calendar__navigation button:enabled:hover {
-    background: #e0e0e0; /* Light grey background on hover */
+.bar-label {
+    font-size: 1rem;
+    font-weight: bold;
+    fill: #555;
 }
-
-/* Style for the calendar days */
-.react-calendar__month-view__weekdays {
-    background: #f4f4f9; /* Light background for weekdays */
-    color: #333; /* Text color for weekdays */
-}
-
-.react-calendar__month-view__days__day {
-    color: #333; /* Text color for days */
-}
-
-.react-calendar__tile--active {
-    background: #8884d8; /* Highlight active date with a color */
-    color: #fff; /* White text color for active date */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .calendar-container {
-        margin-top: 15px; /* Reduce space above the calendar on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .calendar-container {
-        margin-top: 10px; /* Further reduce space above the calendar on very small screens */
-    }
-}
-

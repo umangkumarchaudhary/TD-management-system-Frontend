@@ -107,7 +107,7 @@ h2 {
 }
 
 /* Responsive styling for the month selector dropdown */
-.month-selector select {
+.month-selector{
     font-size: 14px;
     padding: 6px;
 }
