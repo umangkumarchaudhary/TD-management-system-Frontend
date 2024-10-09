@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import io from 'socket.io-client';  // Import socket.io-client
 import './BookingForm.css';
 
-const BACKEND_URL = process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:5000' 
-    : 'https://td-management-system-backend.onrender.com';
-
-    const socket = io(BACKEND_URL);
+const BACKEND_URL = 'https://td-management-system-backend.onrender.com';
 
 const BookingForm = ({ onBookingSuccess }) => {
     const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
@@ -18,6 +13,7 @@ const BookingForm = ({ onBookingSuccess }) => {
     const [consultantName, setConsultantName] = useState('');
     const [location, setLocation] = useState('');
     const [passkey, setPasskey] = useState('');
+
     const [carOptions] = useState([
         'A200 : Spectral Blue', 'A200d : cosmos Black', 'A200 : indium Silver','C220d : Mojave Silver', 'C220d : Opalite White','c200 : white', 'C 300 : Sodalite Blue',
         'E220d : Graphite Grey','E220d : Polar white(workshop)','E200 : Polar White','E 350d : Graphite Grey','GLA220d 4 matic(AMG LINE): Mountain Grey','GLA 200 : Cosmos Black',
@@ -55,18 +51,6 @@ const BookingForm = ({ onBookingSuccess }) => {
         'Vishal' :'vishal1234',
         'OtherTaskLikeFuelingorWashing' : 'other1234',
     };
-
-    // This effect listens for notifications about new bookings
-    useEffect(() => {
-        socket.on('newBooking', (bookingDetails) => {
-            alert(`New booking made: ${bookingDetails.carModel} by ${bookingDetails.consultantName}`);
-        });
-
-        // Cleanup socket connection on unmount
-        return () => {
-            socket.off('newBooking');
-        };
-    }, []);
 
     useEffect(() => {
         const generateTimeOptions = () => {
@@ -236,33 +220,55 @@ const BookingForm = ({ onBookingSuccess }) => {
                 <label>Consultant Name</label>
                 <select value={consultantName} onChange={(e) => setConsultantName(e.target.value)} required>
                     <option value="">Select Consultant</option>
-                    {Object.keys(consultantPasskeys).map((consultant) => (
-                        <option key={consultant} value={consultant}>{consultant}</option>
-                    ))}
+                    {/* ...Consultant options */}
+                    <option value="Umang">Umang</option>
+                    <option value="King">King</option>
+                    <option value="Harsh">Harsh</option>
+                    <option value="Aditya">Aditya</option>
+                    <option value="Shefali Jain">Shefali Jain</option>
+                    <option value="Amogh">Amogh</option>
+                    <option value= "Anmol"> Anmol</option>
+                    <option value="Nidhi">Nidhi</option>
+                    <option value="Imaad">Imaad</option>
+                    <option value="Durgesh">Durgesh</option>
+                    <option value="Vaibhav">Vaibhav</option>
+                    <option value="Sushil">Sushil</option>
+                    <option value ="Ajinkya"> Ajinkya</option>
+                    <option value = "Bhagyesh">Bhagyesh</option>
+                    <option value = "Hemant GM sales"> Hemant GM sales</option>
+                    <option value = "Ankit Biswal"> Ankit </option>
+                    <option value = "Rachana">Rachana Bagav</option>
+                    <option value = "Vikram">Vikram</option>
+                    <option value = "Vishal">Vishal</option>
+                    <option value = "Zakir">Zakir</option>
+                    <option value = "Abhijeet">Abhijeet</option>
+                    <option value = "Ashish">Ashish</option>
+                    <option value = "Chauffer">Chauffer</option>
+                    <option value = "OtherTaskLikeFuelingorWashing">Fueling/Washing</option>
                 </select>
             </div>
             <div className="form-group">
                 <label>Location</label>
-                <input 
-                    type="text" 
-                    value={location} 
-                    onChange={(e) => setLocation(e.target.value)} 
-                    required 
-                    placeholder="Enter Location"
+                <input
+                    type="text"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    placeholder="Enter test drive location"
+                    required
                 />
             </div>
             <div className="form-group">
                 <label>Passkey</label>
-                <input 
-                    type="password" 
-                    value={passkey} 
-                    onChange={(e) => setPasskey(e.target.value)} 
-                    required 
-                    placeholder="Enter Passkey"
+                <input
+                    type="password"
+                    value={passkey}
+                    onChange={(e) => setPasskey(e.target.value)}
+                    placeholder="Enter passkey"
+                    required
                 />
             </div>
             <button type="submit" disabled={loading}>
-                {loading ? 'Booking...' : 'Book Car'}
+                {loading ? 'Submitting...' : 'Submit Booking'}
             </button>
         </form>
     );
